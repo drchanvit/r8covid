@@ -1,39 +1,22 @@
-/**
- * Welcome to your Workbox-powered service worker!
- *
- * You'll need to register this file in your web app and you should
- * disable HTTP caching for this file too.
- * See https://goo.gl/nhQhGp
- *
- * The rest of the code is auto-generated. Please don't update this file
- * directly; instead, make changes to your Workbox build configuration
- * and re-run your build process.
- * See https://goo.gl/2aRDsh
- */
+if (typeof importScripts === 'function') {
+  importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.0.0/workbox-sw.js');
+  /* global workbox */
+  if (workbox) {
+    console.log('Workbox is loaded');
+    workbox.core.skipWaiting();
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+    /* injection point for manifest files.  */
+    workbox.precaching.precacheAndRoute([{"revision":"63b316c5d2f70ced45bcbda10fd25eb0","url":"index.html"},{"revision":"385f4a03765292db6b80a59969515f49","url":"precache-manifest.385f4a03765292db6b80a59969515f49.js"},{"revision":"903b016c8fcf8d63dd21c8137c085895","url":"static/js/2.4a1e6586.chunk.js"},{"revision":"41b1dee6a4b5db3053cae995d0259344","url":"static/js/main.675c5bfc.chunk.js"},{"revision":"9ccf511a8d2df1c77a616fb1cff1a9e2","url":"static/js/runtime-main.13904200.js"}]);
 
-importScripts(
-  "/r8covid/precache-manifest.4d54b7ea10eda125c559467c998c3295.js"
-);
-
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
+    /* custom cache rules */
+     workbox.routing.registerRoute(
+      new workbox.routing.NavigationRoute(
+        new workbox.strategies.NetworkFirst({
+          cacheName: 'PRODUCTION',
+        })
+      )
+    );
+  } else {
+    // console.log('Workbox could not be loaded. No Offline support');
   }
-});
-
-workbox.core.clientsClaim();
-
-/**
- * The workboxSW.precacheAndRoute() method efficiently caches and responds to
- * requests for URLs in the manifest.
- * See https://goo.gl/S9QRab
- */
-self.__precacheManifest = [].concat(self.__precacheManifest || []);
-workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
-
-workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/r8covid/index.html"), {
-  
-  blacklist: [/^\/_/,/\/[^/?]+\.[^/]+$/],
-});
+}
