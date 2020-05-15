@@ -6,7 +6,7 @@ if (typeof importScripts === 'function') {
     workbox.core.skipWaiting();
 
     /* injection point for manifest files.  */
-    workbox.precaching.precacheAndRoute([{"revision":"4ae157d4b232487e581bc542e90428fe","url":"index.html"},{"revision":"08742cce1f9a3b34d38399b8fb426c03","url":"precache-manifest.08742cce1f9a3b34d38399b8fb426c03.js"},{"revision":"903b016c8fcf8d63dd21c8137c085895","url":"static/js/2.4a1e6586.chunk.js"},{"revision":"b2035d2cc2da45bd0d42e47d25dabfa5","url":"static/js/main.27c86d71.chunk.js"},{"revision":"9ccf511a8d2df1c77a616fb1cff1a9e2","url":"static/js/runtime-main.13904200.js"}]);
+    workbox.precaching.precacheAndRoute([{"revision":"1da6b99ffb8bf4b0b5cd1779ede0e173","url":"index.html"},{"revision":"4269454f1020f9ee069fc37bb078c4de","url":"precache-manifest.4269454f1020f9ee069fc37bb078c4de.js"},{"revision":"903b016c8fcf8d63dd21c8137c085895","url":"static/js/2.4a1e6586.chunk.js"},{"revision":"4263af5172bb7d68894fd689da5fc446","url":"static/js/main.f6e7a40b.chunk.js"},{"revision":"9ccf511a8d2df1c77a616fb1cff1a9e2","url":"static/js/runtime-main.13904200.js"}]);
 
     /* custom cache rules */
      workbox.routing.registerRoute(
